@@ -34,7 +34,13 @@ para esse container "teste-portal", portanto a verificação foi bem sucedida.
 
 3. Nome completo da imagem publicada e link público do repositório no Docker Hub.
 
+bcampanhasenai/agrovale-portal:1.0-26128271
+
+https://hub.docker.com/repository/docker/bcampanhasenai/agrovale-portal/
+
 4. Por que o `docker login` foi feito com um token de acesso e não com a senha da conta?
+
+Para evitar que as credenciais ou traços dela fiquem salvos nos arquivos do computador local.
 
 ## Parte 3 · Página de manutenção
 
