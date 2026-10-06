@@ -73,8 +73,45 @@ Por questões de segurança. A consulta se dá pelo comando
 9. Quais comandos você usou para derrubar e subir a stack? Qual comando teria apagado o post que você criou,
    e por quê?
 
+docker compose down
+
+docker compose up -d
+
 10. Código de conclusão impresso pelo verificador:
 
 ```
-(cole aqui)
+Aluno@ECFP106D1315088 UCRT64 ~/Downloads/avaliacao-docker-26128271 (main)
+$ bash scripts/verificar.sh
+================================================================
+ Verificador · Avaliação Prática de Docker · Turma A
+================================================================
+ Matrícula 26128271 · portal 8071 · blog 9071 · manutenção 7071
+
+A. Arquivos, imagens e Git
+[ OK ] A1 portal/Dockerfile segue os requisitos
+[ OK ] A2 imagem manutencao:26128271 corrigida e servindo o aviso
+[ OK ] A3 .env fora do Git e .env.example versionado
+[ OK ] A4 5+ commits e remoto no GitHub (encontrados: 9)
+[ OK ] A5 imagem bcampanhasenai/agrovale-portal:1.0-26128271 pública no Docker Hub
+
+B. Stack em execução
+[ OK ] B1 serviços portal, blog e db em execução
+[ OK ] B2 portal roda a imagem publicada
+[ OK ] B3 portas: portal em 8071 e blog em 9071
+[ OK ] B4 db sem porta publicada e com volume nomeado
+[ OK ] B5 blog com volume nomeado em /var/www/html
+[ OK ] B6 rede própria compartilhada pelos três serviços
+[ OK ] B7 política de restart nos três serviços
+[ OK ] B8 nenhuma senha escrita direto no docker-compose.yml
+
+C. Conteúdo e persistência
+[ OK ] C1 portal mostra seu nome e sua matrícula
+[ OK ] C2 WordPress instalado com a matrícula no título do site
+[FALHA] C3 post sobreviveu à recriação do blog (post 2026-10-06T01:41:12 · container 2026-10-06T01:40:47)
+         -> o post existe, mas o container do blog não foi recriado depois dele (faça o ciclo de down e up)
+
+================================================================
+ Resultado: 15/16 verificações
+ Ainda há falhas. Corrija e rode de novo.
+================================================================
 ```
