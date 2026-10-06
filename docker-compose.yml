@@ -1,0 +1,48 @@
+version: '1.0'
+
+services:
+  portal:
+    image: bcampanhasenai/agrovale-portal:1.0-26128271
+    ports:
+      - "8071:80"
+    restart: unless-stopped
+    networks:
+      - redepropria
+
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - dados_db:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - redepropria
+
+  blog:
+    image: wordpress:6-apache
+    ports:
+      - "9071:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - dados_blog:/var/www/html
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - redepropria
+
+volumes:
+  dados_db:
+  dados_blog:
+
+networks:
+  redepropria:
+    driver: bridge
