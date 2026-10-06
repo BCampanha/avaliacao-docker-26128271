@@ -1,9 +1,9 @@
 # Respostas · Avaliação Prática de Docker · Cooperativa AgroVale (Turma A)
 
-Nome:
-Matrícula:
-Usuário do GitHub:
-Usuário do Docker Hub:
+Nome: Beatriz Campanha Silva
+Matrícula: 26128271
+Usuário do GitHub: BCampanha
+Usuário do Docker Hub: bcampanhasenai
 
 Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta curta e certa vale mais
 do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou compose vale zero.
@@ -12,8 +12,23 @@ do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou 
 
 1. Qual imagem base você usou e qual o tamanho final da imagem do portal (saída de `docker images`)?
 
+Eu usei a imagem base nginx:1.27.2-alpine, o tamanho final da imagem do portal foi 79.7MB.
+
 2. Em qual pasta do container o Nginx procura os arquivos do site? Mostre o comando que você usou para
    conferir que o `index.html` está lá dentro.
+
+O Nginx procura os arquivos do site na pasta portal/html/.
+O comando para conferir que o index.html está lá dentro é
+```
+docker exec -it teste-portal ls -l /usr/share/nginx/html                                             
+```
+Esse comando lista todos os itens dentro da pasta /usr/share/nginx/html para a qual o html/ foi copiado, de acordo com o comando COPY do Dockerfile. O comando retornou
+```
+-rw-r--r--    1 root     root           497 Oct  2  2024 50x.html
+-rwxr-xr-x    1 root     root          1209 Oct  6 00:22 estilo.css
+-rwxr-xr-x    1 root     root          2020 Oct  6 00:22 index.html
+```
+para esse container "teste-portal", portanto a verificação foi bem sucedida.
 
 ## Parte 2 · Docker Hub
 
