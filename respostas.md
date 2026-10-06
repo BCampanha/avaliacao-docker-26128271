@@ -60,8 +60,13 @@ A ordem das portas indica qual é a porta da máquina local (a primeira), e qual
 
 7. No serviço `blog`, por que `WORDPRESS_DB_HOST` recebe `db` e não `localhost`?
 
+Porque os containers estão em uma rede própria, portanto basta o nome do serviço, que é db.
+
 8. Por que o serviço `db` não publica a porta 3306? Se precisar consultar o banco, como faz sem publicar
    a porta? Mostre o comando.
+
+Por questões de segurança. A consulta se dá pelo comando 
+`docker exec -it avaliacao-docker-26128271-db-1 mariadb -u root -p`; quando executado, o terminal pede a senha root, definida no .env.
 
 ## Parte 5 · Persistência
 
