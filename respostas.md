@@ -48,11 +48,13 @@ Para evitar que as credenciais ou traços dela fiquem salvos nos arquivos do com
 
 | # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
 |---|---|---|---|---|
-| 1 | | | | |
+| 1 | build e run | Aparece a página inicial do nginx, e não a página de "Voltamos em breve"| Build e run não deram erros, mas a página não está aparecendo | Reescrevendo o Dockerfile: Copio a pasta site/ para o nginx/html, e exponho a porta 80 |
 | 2 | | | | |
 | 3 | | | | |
 
 6. Qual a diferença entre `-p 7042:80` e `-p 80:7042` no `docker run`? Qual dos dois números é a porta do container?
+
+A ordem das portas indica qual é a porta da máquina local (a primeira), e qual é a porta exposta do container (a segunda). Em -p 7071:80, 7071 é a porta do computador local, e 80 é a porta exposta do container.
 
 ## Parte 4 · docker-compose.yml
 
