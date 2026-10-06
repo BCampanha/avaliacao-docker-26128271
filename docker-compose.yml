@@ -28,9 +28,9 @@ services:
       - "9071:80"
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
-      WORDPRESS_DB_USER: ${WODRPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WORDPRESS_PASSWORD}
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
     volumes:
       - dados_blog:/var/www/html
     depends_on:
